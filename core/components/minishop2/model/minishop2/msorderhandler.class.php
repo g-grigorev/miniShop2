@@ -581,7 +581,9 @@ class msOrderHandler implements msOrderInterface
             )
         ) {
             $cost = $delivery->getCost($this, $cost);
-            $delivery_cost = $cost - $cart['total_cost'];
+            $delivery_cost = $with_cart
+                ? $cost - $cart['total_cost']
+                : $cost;
         }
 
         /** @var msPayment $payment */
